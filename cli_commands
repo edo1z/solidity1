@@ -1,0 +1,15 @@
+> truffle console
+truffle(development)> let hoge = await Hoge.deployed()
+truffle(development)> let accounts = await web3.eth.getAccounts()
+truffle(development)> let ac0 = accounts[0]
+truffle(development)> let ac1 = accounts[1]
+truffle(development)> let gb = web3.eth.getBalance
+truffle(development)> gb(ac0)
+'99911130980000000000'
+truffle(development)> gb(ac1)
+'99999292960000000000'
+truffle(development)> hoge.send.sendTransaction({from:ac1,value:5e18})
+truffle(development)> gb(ac1)
+'94998585920000000000'
+truffle(development)> gb(ac0)
+'104911130980000000000'

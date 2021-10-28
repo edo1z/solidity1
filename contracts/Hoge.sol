@@ -1,13 +1,15 @@
+// SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.5;
 
 contract Hoge {
-    uint public count;
-    uint public num = 2;
-    uint private password = 3;
-    function set() public { 
-        count += 1;
+    address payable addr;
+
+    constructor() {
+        addr = payable(msg.sender);
     }
-    function get() public view returns (uint) {
-        return count;
+
+    function send() public payable {
+        addr.transfer(msg.value);
+        addr = payable(msg.sender);
     }
 }
